@@ -116,6 +116,33 @@ class Treffend_Cookies_ACF
                         'selected' => 0,
                     ),
                     array(
+                        'key' => 'field_66c3083bb0d9c',
+                        'label' => 'Banner style',
+                        'name' => 'treffend_cookie-banner_style',
+                        'aria-label' => '',
+                        'type' => 'select',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'choices' => array(
+                            'banner-right_bottom' => 'Bottom right',
+                            'banner-left_bottom' => 'Bottom left',
+                            'bar-bottom' => 'Bottom full width',
+                        ),
+                        'default_value' => 'banner-right_bottom',
+                        'return_format' => 'value',
+                        'multiple' => 0,
+                        'allow_null' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'placeholder' => '',
+                    ),
+                    array(
                         'key' => 'field_66bc9995a6141',
                         'label' => 'Banner title',
                         'name' => 'treffend_cookie-banner_title',
@@ -207,7 +234,7 @@ class Treffend_Cookies_ACF
                 ),
                 'menu_order' => 0,
                 'position' => 'normal',
-                'style' => 'default',
+                'style' => 'seamless',
                 'label_placement' => 'top',
                 'instruction_placement' => 'label',
                 'hide_on_screen' => '',
@@ -219,16 +246,17 @@ class Treffend_Cookies_ACF
 
         add_action('acf/init', function () {
             acf_add_options_page(array(
-                'page_title' => 'Cookie options',
-                'menu_slug' => 'cookie-options',
-                'position' => '',
-                'redirect' => false,
+                'page_title'  => 'Cookies',
+                'menu_slug'   => 'cookie-options',
+                'position'    => '',
+                'parent_slug' => 'options-general.php', // This places the page under "Settings"
+                'redirect'    => false,
                 'description' => 'Change the cookie settings',
-                'menu_icon' => array(
-                    'type' => 'dashicons',
+                'menu_icon'   => array(
+                    'type'  => 'dashicons',
                     'value' => 'dashicons-info',
                 ),
-                'icon_url' => 'dashicons-info', // TODO:: Change this to some nice icon
+                'icon_url'    => 'dashicons-info',
             ));
         });
     }
