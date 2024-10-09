@@ -9,6 +9,7 @@
     // display: block;
     flex-wrap: wrap;
     display: none;
+    z-index: 999999999999999;
 
     // Banner content
     .title {
@@ -35,15 +36,15 @@
             border-bottom: none;
 
             &.accept {
-                background-color: #1e1e1e;
-                color: #e1e1e1;
+                background-color: var(--primary-color, #000000);
+                color: var(--color-text-primary, #ffffff);
                 padding: 1em 1.5em;
                 border-radius: 2em;
                 transition: 0.2s;
 
                 &:hover {
-                    background-color: #e1e1e1;
-                    color: #1e1e1e;
+                    background-color: var(--color-primary-dark, #292929);
+                    color: var(--color-text-primary, #ffffff);
                 }
             }
 
