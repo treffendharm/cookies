@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Treffend Cookies
-Plugin URI: https://treffendenco.nl
+Plugin URI: https://github.com/treffendharm/cookies
 Description: This plugin adds a cookie banner to your WordPress site. It works with Google Consent mode v2.
 Version: 2.0.0
-Author: Harm van de Kraats
+Author: Treffend & Co - Harm van de Kraats
 Author URI: https://treffendenco.nl
 License: GPL2
 */
@@ -60,3 +60,17 @@ function init_treffend_cookies()
     Treffend_Cookies_ACF::init();
 }
 add_action('plugins_loaded', 'init_treffend_cookies');
+
+
+// Add settings link to the plugin
+function my_plugin_settings($settings)
+{
+    $settings[] = '<a href="' . get_admin_url(null, 'options-general.php?page=cookie-options') . '">Settings</a>';
+    $settings[] = '<a href="https://github.com/treffendharm/cookies/issues" target="_blank">Bugs</a>';
+    return $settings;
+}
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'my_plugin_settings');
+
+
+// TODO: add docs
+// TODO: add automatic updater

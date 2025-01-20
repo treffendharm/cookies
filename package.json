@@ -8,11 +8,6 @@
     "author": "Harm van de Kraats",
     "license": "ISC",
     "devDependencies": {
-        "@labelvier/starter-kit-engine": "^1.4.0",
-        "glightbox": "^3.1.0",
-        "swiper": "^6.8.4"
-    },
-    "dependencies": {
-        "@formkit/auto-animate": "^0.8.2"
+        "@labelvier/starter-kit-engine": "^1.4.0"
     }
 }
