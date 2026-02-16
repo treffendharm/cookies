@@ -9,8 +9,8 @@ class Treffend_Cookies_Assets {
     }
 
     public static function enqueue_scripts() {
-        wp_enqueue_style('treffend_cookies-style', plugin_dir_url(__FILE__) . '../style.css');
-        wp_enqueue_script('treffend_cookies-script', plugin_dir_url(__FILE__) . '../src/js/treffend_cookies.js', [], TREFFENDCOOKIE_PLUGIN_VERSION, true);
+        wp_enqueue_style('treffend_cookies-style', plugin_dir_url(__FILE__) . '../style.css', [], TREFFENDCOOKIE_PLUGIN_VERSION);
+        wp_enqueue_script('treffend_cookies-script', plugin_dir_url(__FILE__) . '../dist/js/treffend_cookies.js', [], TREFFENDCOOKIE_PLUGIN_VERSION, true);
     }
 
     // Add admin.css to the admin area

@@ -21,9 +21,28 @@ defined('ABSPATH') || exit;
 
 ?>
 
-<div class="cookie <?php the_field('treffend_cookie-banner_style', 'option'); ?>" id="cookie-consent-banner">
+<div class="cookie <?php the_field('treffend_cookie-banner_style', 'option'); ?>" id="cookie-consent-banner" role="region" aria-label="Cookie toestemming banner">
     <span class="title"><?= get_field('treffend_cookie-banner_title', 'option'); ?></span>
-    <div class="text"><?= get_field('treffend_cookie-banner_text', 'option'); ?></div>
+    <div class="text">
+        <?= get_field('treffend_cookie-banner_text', 'option'); ?>
+        <?php
+        $privacy_link_field = get_field('treffend_cookie-privacy_link', 'option');
+        // Handle ACF link field (can be array or string for backwards compatibility)
+        $privacy_link = is_array($privacy_link_field) ? ($privacy_link_field['url'] ?? '') : ($privacy_link_field ?? '');
+        $privacy_link_title = is_array($privacy_link_field) ? ($privacy_link_field['title'] ?? 'Privacyverklaring') : 'Privacyverklaring';
+        $privacy_link_target = is_array($privacy_link_field) ? ($privacy_link_field['target'] ?? '_blank') : '_blank';
+
+        if ($privacy_link):
+        ?>
+            <div class="privacy-link">
+                <a href="<?= esc_url($privacy_link); ?>" target="<?= esc_attr($privacy_link_target); ?>" rel="noopener noreferrer" class="cookie-link">
+                    <?= esc_html($privacy_link_title); ?>
+                </a>
+            </div>
+        <?php endif; ?>
+
+    </div>
+
     <div class="buttons">
         <?php do_action('display_cookie_consent_buttons'); ?>
     </div>

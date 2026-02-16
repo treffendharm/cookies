@@ -3,7 +3,7 @@
 Plugin Name: Treffend Cookies
 Plugin URI: https://github.com/treffendharm/cookies
 Description: This plugin adds a cookie banner to your WordPress site. It works with Google Consent mode v2.
-Version: 2.0.3
+Version: 3.0.3
 Author: Treffend & Co - Harm van de Kraats
 Author URI: https://treffendenco.nl
 License: GPL2
@@ -71,6 +71,35 @@ function my_plugin_settings($settings)
 }
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'my_plugin_settings');
 
+
+/**
+ * Display a cookie settings link/button
+ * 
+ * @param string $text Link/button text (default: 'Cookie Instellingen')
+ * @param string $class CSS class to add
+ * @param string $type 'link' or 'button' (default: 'link')
+ * @return string HTML output
+ */
+function treffend_cookie_settings_link($text = 'Cookie Instellingen', $class = 'treffend-cookie-settings-link', $type = 'link')
+{
+    $text = esc_html($text);
+    $class = esc_attr($class);
+    $type = $type === 'button' ? 'button' : 'a';
+    
+    if ($type === 'button') {
+        return sprintf(
+            '<button type="button" class="%s" onclick="if(typeof window.treffendCookiesOpenModal === \'function\') { window.treffendCookiesOpenModal(); return false; }">%s</button>',
+            $class,
+            $text
+        );
+    } else {
+        return sprintf(
+            '<a href="#" class="%s" onclick="if(typeof window.treffendCookiesOpenModal === \'function\') { window.treffendCookiesOpenModal(); return false; }">%s</a>',
+            $class,
+            $text
+        );
+    }
+}
 
 // TODO: add docs
 // TODO: add automatic updater
